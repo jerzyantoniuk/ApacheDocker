@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 LABEL maintainer="Jerzy Antoniuk | jerzy.antoniuk@pollub.edu.pl"
 RUN apt-get update  &&  apt-get upgrade -y
-RUN apt-get install apache2 -y
-EXPOSE 8080
-VOLUME ["/var/www","/var/log/apache2","/etc/apache2"]
-ENTRYPOINT [/usr/sbin/apache2ctl","-D","FOREGROUND"]
+RUN apt-get install httpd -y
+EXPOSE 80
+VOLUME ["/usr/sbin/httpd","/var/log/httpd"]
+ENTRYPOINT [/usr/sbin/httpd","-D","FOREGROUND"]
